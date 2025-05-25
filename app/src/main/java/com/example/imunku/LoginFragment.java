@@ -1,64 +1,153 @@
 package com.example.imunku;
 
+import static android.app.PendingIntent.getActivity;
+import static java.security.AccessController.getContext;
+
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import android.widget.Toast;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link LoginFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
+import com.example.imunku.MainActivity;
+import com.example.imunku.R;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.GoogleAuthProvider;
+
 public class LoginFragment extends Fragment {
+    private EditText etEmail, etPassword;
+    private TextView tvGoToRegister;
+    private Button btnLogin, btnGoogleSignIn;
+    private ProgressBar progressBar;
+    private FirebaseAuth mAuth;
+    private GoogleSignInClient mGoogleSignInClient;
+    private static final int RC_SIGN_IN = 1001;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    @SuppressLint("MissingInflatedId")
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater,
+                             @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_login, container, false);
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+        // Inisialisasi view
+        etEmail = view.findViewById(R.id.etUsernameOrEmail);
+        etPassword = view.findViewById(R.id.etPassword);
+        btnLogin = view.findViewById(R.id.btnLogin);
+        tvGoToRegister = view.findViewById(R.id.tvGoToRegister);
+        btnGoogleSignIn = view.findViewById(R.id.btnGoogleSignIn);
+//        progressBar = view.findViewById(R.id.progressBar);
 
-    public LoginFragment() {
-        // Required empty public constructor
+        // Inisialisasi Firebase Auth
+        mAuth = FirebaseAuth.getInstance();
+
+        // Setup Google Sign-In options
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestEmail()
+                .build();
+        mGoogleSignInClient = GoogleSignIn.getClient(requireActivity(), gso);
+
+        // Event klik
+        btnLogin.setOnClickListener(v -> loginUser());
+        tvGoToRegister.setOnClickListener(v -> navigateToRegister());
+        btnGoogleSignIn.setOnClickListener(v -> signInWithGoogle());
+
+        return view;
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment LoginFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static LoginFragment newInstance(String param1, String param2) {
-        LoginFragment fragment = new LoginFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
+    private void loginUser() {
+        String email = etEmail.getText().toString().trim();
+        String password = etPassword.getText().toString().trim();
+
+        if (email.isEmpty() || password.isEmpty()) {
+            Toast.makeText(getContext(), "Semua field harus diisi", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        progressBar.setVisibility(View.VISIBLE);
+        mAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(requireActivity(), task -> {
+                    progressBar.setVisibility(View.GONE);
+                    if (task.isSuccessful()) {
+                        Toast.makeText(getContext(), "Login berhasil", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(getActivity(), MainActivity.class));
+                        requireActivity().finish();
+                    } else {
+                        Toast.makeText(getContext(), "Login gagal: " + task.getException().getMessage(),
+                                Toast.LENGTH_LONG).show();
+                    }
+                });
+    }
+
+    private void navigateToRegister() {
+        requireActivity().getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fragmentContainer, new RegisterFragment())
+                .addToBackStack(null)
+                .commit();
+    }
+
+    private void signInWithGoogle() {
+        progressBar.setVisibility(View.VISIBLE);
+        Intent signInIntent = mGoogleSignInClient.getSignInIntent();
+        startActivityForResult(signInIntent, RC_SIGN_IN);
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == RC_SIGN_IN) {
+            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+            try {
+                GoogleSignInAccount account = task.getResult(ApiException.class);
+                firebaseAuthWithGoogle(account.getIdToken());
+            } catch (ApiException e) {
+                progressBar.setVisibility(View.GONE);
+                Toast.makeText(getContext(), "Google sign in failed: " + e.getMessage(),
+                        Toast.LENGTH_SHORT).show();
+            }
         }
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_login, container, false);
+    private void firebaseAuthWithGoogle(String idToken) {
+        AuthCredential credential = GoogleAuthProvider.getCredential(idToken, null);
+        mAuth.signInWithCredential(credential)
+                .addOnCompleteListener(requireActivity(), new OnCompleteListener<>() {
+                    @Override
+                    public void onComplete(@NonNull Task task) {
+                        progressBar.setVisibility(View.GONE);
+                        if (task.isSuccessful()) {
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            Toast.makeText(getContext(), "Selamat Datang " + user.getDisplayName(),
+                                    Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(getActivity(), MainActivity.class));
+                            requireActivity().finish();
+                        } else {
+                            Toast.makeText(getContext(), "Authentication Failed: " + task.getException().getMessage(),
+                                    Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
     }
 }
