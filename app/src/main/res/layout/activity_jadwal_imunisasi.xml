@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bottom_navigation"
+        android:padding="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Jadwal Imunisasi"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="#2D6151"
+                android:layout_marginBottom="24dp" />
+
+            <EditText
+                android:id="@+id/etNama"
+                style="@style/InputRounded"
+                android:hint="input  nama anak" />
+
+            <EditText
+                android:id="@+id/etJK"
+                style="@style/InputRounded"
+                android:hint="input jenis kelamin anak" />
+
+            <EditText
+                android:id="@+id/etUmur"
+                style="@style/InputRounded"
+                android:hint="input  umur anak" />
+
+            <EditText
+                android:id="@+id/etJenis"
+                style="@style/InputRounded"
+                android:hint="input jenis imunisasi" />
+
+            <EditText
+                android:id="@+id/etTanggal"
+                style="@style/InputRounded"
+                android:hint="input tanggal imunisasi" />
+
+            <Button
+                android:id="@+id/btnSimpan"
+                style="@style/PrimaryButton"
+                android:text="simpan"
+                android:layout_marginTop="12dp" />
+
+            <TextView
+                android:id="@+id/tvJadwal1"
+                style="@style/OutputBox"
+                android:text="Jadwal Imunisasi 1"
+                android:layout_marginTop="16dp" />
+
+            <TextView
+                android:id="@+id/tvJadwal2"
+                style="@style/OutputBox"
+                android:text="Jadwal Imunisasi 2"
+                android:layout_marginTop="12dp" />
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Bottom Menu -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        app:menu="@menu/bottom_nav_menu"
+        android:background="#E7F3EF"
+        app:itemIconTint="@color/nav_icon_color"
+        app:itemTextColor="@color/nav_icon_color" />
+</RelativeLayout>
