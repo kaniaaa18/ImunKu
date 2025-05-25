@@ -36,7 +36,7 @@
                 android:layout_gravity="center" />
 
             <EditText
-                android:id="@+id/username"
+                android:id="@+id/etUsername"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:hint="Username"
@@ -45,7 +45,7 @@
                 android:marginTop="20dp"/>
 
             <EditText
-                android:id="@+id/email"
+                android:id="@+id/etEmail"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:hint="Email"
@@ -54,7 +54,7 @@
                 android:marginTop="20dp"/>
 
             <EditText
-                android:id="@+id/password"
+                android:id="@+id/etPassword"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:hint="Password"
@@ -63,7 +63,7 @@
                 android:marginTop="10dp"/>
 
             <Button
-                android:id="@+id/btn_register"
+                android:id="@+id/btnRegister"
                 android:layout_width="300dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="10dp"
@@ -71,6 +71,35 @@
                 android:text="SIGN UP"
                 android:textColor="#FFFFFF"
                 android:backgroundTint="@color/green1"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:layout_marginTop="16dp">
+
+                <TextView
+                    android:id="@+id/tv_sudah_punya_akun"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sudah punya akun?"
+                    android:textColor="#000000"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tvGoToLogin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:minWidth="48dp"
+                    android:minHeight="48dp"
+                    android:text=" Login"
+                    android:textColor="@color/green2"
+                    android:textStyle="bold"
+                    android:textSize="14sp"
+                    android:clickable="true"
+                    android:focusable="true" />
+            </LinearLayout>
 
         </LinearLayout>
 
