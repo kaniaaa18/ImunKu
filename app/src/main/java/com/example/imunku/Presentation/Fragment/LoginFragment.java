@@ -1,7 +1,6 @@
-package com.example.imunku;
+package com.example.imunku.Presentation.Fragment;
 
 import static android.app.PendingIntent.getActivity;
-import static java.security.AccessController.getContext;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -19,7 +18,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.example.imunku.MainActivity;
+import com.example.imunku.Presentation.UI.MainActivity;
 import com.example.imunku.R;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;

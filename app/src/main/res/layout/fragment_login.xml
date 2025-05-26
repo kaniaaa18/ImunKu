@@ -7,7 +7,7 @@
     android:gravity="center"
     android:orientation="vertical"
     android:background="@drawable/bg_login"
-    tools:context=".LoginActivity">
+    tools:context=".Presentation.UI.LoginActivity">
 
     <!-- Box Login menggunakan CardView -->
     <androidx.cardview.widget.CardView

@@ -18,13 +18,13 @@
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="@string/google_maps_key" />
         <activity
-            android:name=".Jadwal_Imunisasi"
+            android:name=".Presentation.UI.Jadwal_Imunisasi"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".Presentation.UI.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".Presentation.UI.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
