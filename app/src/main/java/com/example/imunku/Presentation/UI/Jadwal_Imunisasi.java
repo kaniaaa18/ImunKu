@@ -1,4 +1,4 @@
-package com.example.imunku;
+package com.example.imunku.Presentation.UI;
 
 import android.os.Bundle;
 import android.view.View;
@@ -6,6 +6,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.imunku.R;
 
 public class Jadwal_Imunisasi extends AppCompatActivity {
 
