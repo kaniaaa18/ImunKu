@@ -1,27 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/nav_calendar"
-        android:icon="@drawable/ic_calendar"
-        android:title=""
-        android:contentDescription="Kalender Imunisasi"/>
+        android:id="@+id/daftar_imunisasi"
+        android:icon="@drawable/daftar_icon"
+        android:title="Daftar Imunisasi" />
     <item
-        android:id="@+id/nav_add"
-        android:icon="@drawable/ic_add"
-        android:title=""
-        android:contentDescription="Tambah Jadwal"/>
+        android:id="@+id/lokasi_faskes"
+        android:icon="@drawable/lokasi_icon"
+        android:title="Lokasi Faskes" />
     <item
-        android:id="@+id/nav_home"
-        android:icon="@drawable/ic_home"
-        android:title=""
-        android:contentDescription="Beranda"/>
+        android:id="@+id/dashbord"
+        android:icon="@drawable/dashbord_icon"
+        android:title="Dashbord" />
     <item
-        android:id="@+id/nav_list"
-        android:icon="@drawable/ic_list"
-        android:title=""
-        android:contentDescription="Daftar Jadwal"/>
+        android:id="@+id/jadwal_imunisasi"
+        android:icon="@drawable/jadwal_imunisasi_icon"
+        android:title="Jadwal Imunisasi" />
     <item
-        android:id="@+id/nav_profile"
-        android:icon="@drawable/ic_user"
-        android:title=""
-        android:contentDescription="Profil Pengguna"/>
+        android:id="@+id/profil"
+        android:icon="@drawable/profil_icon"
+        android:title="Profil" />
 </menu>
