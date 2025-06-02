@@ -56,6 +56,7 @@ dependencies {
     implementation("androidx.credentials:credentials-play-services-auth:1.5.0")
     implementation("com.google.android.libraries.identity.googleid:googleid:1.1.1")
     implementation("androidx.fragment:fragment-ktx:1.6.2")
+    implementation(libs.play.services.location)
 
     // Testing
     testImplementation("junit:junit:4.13.2")

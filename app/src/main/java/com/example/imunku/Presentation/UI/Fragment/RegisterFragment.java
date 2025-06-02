@@ -1,4 +1,4 @@
-package com.example.imunku.Presentation.Fragment;
+package com.example.imunku.Presentation.UI.Fragment;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;

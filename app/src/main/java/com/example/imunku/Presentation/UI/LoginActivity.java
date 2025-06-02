@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.imunku.Presentation.Fragment.LoginFragment;
+import com.example.imunku.Presentation.UI.Fragment.LoginFragment;
 import com.example.imunku.R;
 
 public class LoginActivity extends AppCompatActivity {

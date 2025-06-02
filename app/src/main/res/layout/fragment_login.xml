@@ -39,7 +39,7 @@
                 android:id="@+id/etUsernameOrEmail"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:hint="Username/Email"
+                android:hint="Email"
                 android:paddingStart="10dp"
                 android:inputType="textEmailAddress"
                 android:marginTop="20dp"/>

@@ -1,4 +1,4 @@
-package com.example.imunku.Presentation.Fragment;
+package com.example.imunku.Presentation.UI.Fragment;
 
 import static android.app.PendingIntent.getActivity;
 
