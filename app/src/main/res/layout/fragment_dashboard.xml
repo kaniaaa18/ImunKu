@@ -11,7 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:gravity="center_vertical|space_between">
+        android:gravity="center_vertical"
+        android:padding="40dp">
 
         <LinearLayout
             android:layout_width="0dp"
@@ -23,11 +24,12 @@
                 android:text="Dashboard"
                 android:textColor="#00838F"
                 android:textStyle="bold"
-                android:textSize="18sp"
+                android:textSize="24sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
             <TextView
+                android:id="@+id/user_name"
                 android:text="Halo, Ibu Ayu!"
                 android:textSize="14sp"
                 android:textColor="#000000"
@@ -36,9 +38,9 @@
         </LinearLayout>
 
         <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:src="@android:drawable/ic_lock_silent_mode_off"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/notif"
             android:contentDescription="Notification Icon" />
     </LinearLayout>
 
@@ -49,17 +51,17 @@
 
     <!-- Infografis -->
     <TextView
+        android:id="@+id/infographics"
         android:layout_width="match_parent"
         android:layout_height="120dp"
-        android:background="#81C784"
+        android:background="@drawable/border_radius"
         android:gravity="center"
         android:text="Infografis tentang\npentingnya imunisasi"
         android:textColor="#FFFFFF"
         android:textSize="16sp"
         android:textStyle="bold"
         android:padding="8dp"
-        android:layout_marginBottom="16dp"
-        android:backgroundTintMode="src_in" />
+        android:layout_marginBottom="16dp" />
 
     <!-- Kategori Artikel -->
     <LinearLayout
@@ -69,50 +71,62 @@
         android:gravity="center"
         android:layout_marginBottom="16dp">
 
-        <TextView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="#81C784"
-            android:gravity="center"
-            android:text="kategori\nartikel"
-            android:textColor="#FFFFFF"
-            android:textSize="14sp"
-            android:layout_marginEnd="16dp" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/ic_media_previous"
+            android:contentDescription="Previous" />
 
         <TextView
-            android:layout_width="100dp"
+            android:layout_width="0dp"
             android:layout_height="100dp"
-            android:background="#81C784"
+            android:layout_weight="1"
+            android:background="@drawable/border_radius"
             android:gravity="center"
-            android:text="kategori\nartikel"
+            android:text="Kategori\nArtikel"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:layout_marginEnd="8dp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_weight="1"
+            android:background="@drawable/border_radius"
+            android:gravity="center"
+            android:text="Kategori\nArtikel"
             android:textColor="#FFFFFF"
             android:textSize="14sp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/ic_media_next"
+            android:contentDescription="Next" />
     </LinearLayout>
 
     <!-- Artikel Populer -->
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:background="#81C784"
+        android:layout_height="189dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/border_radius"
         android:gravity="center"
-        android:text="artikel populer"
+        android:padding="24dp"
+        android:text="Artikel Populer"
         android:textColor="#FFFFFF"
         android:textSize="16sp"
-        android:textStyle="bold"
-        android:padding="8dp"
-        android:layout_marginBottom="16dp" />
+        android:textStyle="bold" />
 
     <!-- Bottom Navigation -->
-
     <Space
         android:layout_width="match_parent"
-        android:layout_height="64dp" />
+        android:layout_height="47dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="64dp"
         android:layout_gravity="bottom"
-        android:layout_marginTop="auto"
         android:background="#FFFFFF"
         android:elevation="8dp"
         android:gravity="center"
@@ -148,7 +162,6 @@
             android:layout_weight="1"
             android:contentDescription="Menu 4"
             android:padding="8dp"
-            android:src="@android:drawable/ic_menu_info_details"/>
+            android:src="@android:drawable/ic_menu_info_details" />
     </LinearLayout>
-
 </LinearLayout>

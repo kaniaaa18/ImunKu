@@ -9,10 +9,11 @@
     <!-- User Icon -->
     <ImageView
         android:id="@+id/user_icon"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:src="@drawable/ic_user"
-        android:layout_gravity="center"/>
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:src="@drawable/profil_icon"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp"/>
 
     <!-- Name Field -->
     <TextView
@@ -27,7 +28,7 @@
         android:id="@+id/name_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/edit_text_background"
+        android:background="@drawable/border_radius"
         android:padding="10dp"/>
 
     <!-- Email Field -->
@@ -43,7 +44,7 @@
         android:id="@+id/email_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/edit_text_background"
+        android:background="@drawable/border_radius"
         android:padding="10dp"/>
 
     <!-- Phone Number Field -->
@@ -59,7 +60,7 @@
         android:id="@+id/phone_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/edit_text_background"
+        android:background="@drawable/border_radius"
         android:padding="10dp"/>
 
     <!-- Password Field -->
@@ -75,27 +76,28 @@
         android:id="@+id/password_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/edit_text_background"
+        android:background="@drawable/border_radius"
         android:padding="10dp"
         android:inputType="textPassword"/>
 
-    <TextView
-        android:id="@+id/gui_guide"
-        android:layout_width="wrap_content"
+    <Button
+        android:id="@+id/panduan_aplikasi"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
         android:text="Panduan Aplikasi"
-        android:textColor="#00796B"
-        android:layout_marginTop="8dp"/>
+        android:background="@drawable/border_radius"/>
 
     <!-- Log Out Button -->
     <Button
         android:id="@+id/logout_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:text="Log Out"
-        android:layout_marginTop="20dp"
-        android:background="@color/colorPrimary"
-        android:textColor="#000000"/>
+        android:background="@drawable/border_radius"
+        android:drawableLeft="@drawable/logout_button"
+        android:padding="10dp"/>
 
     <!-- Save Button -->
     <Button
@@ -103,19 +105,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:background="@color/colorAccent"
         android:text="Simpan"
-        android:textColor="#000000" />
+        android:background="@drawable/border_radius"
+        android:drawableLeft="@drawable/pencil_icon"
+        android:padding="10dp"/>
 
     <Space
         android:layout_width="match_parent"
-        android:layout_height="64dp" />
+        android:layout_height="50dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="64dp"
         android:layout_gravity="bottom"
-        android:layout_marginTop="auto"
         android:background="#FFFFFF"
         android:elevation="8dp"
         android:gravity="center"
@@ -152,6 +154,5 @@
             android:contentDescription="Menu 4"
             android:padding="8dp"
             android:src="@android:drawable/ic_menu_info_details" />
-
     </LinearLayout>
 </LinearLayout>
